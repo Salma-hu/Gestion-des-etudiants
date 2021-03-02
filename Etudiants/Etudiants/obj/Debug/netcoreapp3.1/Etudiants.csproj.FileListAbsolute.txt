@@ -232,3 +232,4 @@ C:\Users\Youcode\Desktop\Les briefs\Gestion-des-etudiants\Etudiants\Etudiants\ob
 C:\Users\Youcode\Desktop\Les briefs\Gestion-des-etudiants\Etudiants\Etudiants\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\Youcode\Desktop\Les briefs\Gestion-des-etudiants\Etudiants\Etudiants\obj\Debug\netcoreapp3.1\Razor\Views\Role\Index.cshtml.g.cs
 C:\Users\Youcode\Desktop\Les briefs\Gestion-des-etudiants\Etudiants\Etudiants\obj\Debug\netcoreapp3.1\Razor\Views\Role\Create.cshtml.g.cs
+C:\Users\Youcode\Desktop\Les briefs\Gestion-des-etudiants\Etudiants\Etudiants\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
