@@ -49,7 +49,7 @@ namespace Etudiants.Controllers
             var RoleList = _applicationDbContext.AspNetRoles.ToList();
 
             ViewBag.Users = new SelectList(UserList, "Id", "Email");
-            ViewBag.Roles = new SelectList(RoleList, "Name", "Name");
+            ViewBag.Roles = new SelectList(RoleList, "Id", "Name");
             
             return View();
         } 
@@ -59,7 +59,8 @@ namespace Etudiants.Controllers
         public async Task<IActionResult>  RoleToUser(AspNetRoles UserRole)
         {
             var User = await _userManager.FindByIdAsync(UserRole.Id);
-            await _userManager.AddToRoleAsync(User, UserRole.Name);
+            var role = await _roleManager.FindByIdAsync(UserRole.Name);
+            await _userManager.AddToRoleAsync(User, role.Name);
             //var u_r = new AspNetUserRoles { RoleId = UserRole.Id, UserId = UserRole.Name };
             //await _applicationDbContext.AspNetUserRoles.AddAsync(u_r);
             //await _applicationDbContext.SaveChangesAsync();

@@ -21,7 +21,8 @@ namespace Etudiants.Controllers
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            return View(await _context.AspNetUsers.ToListAsync());
+            var Users = _context.AspNetUsers.FromSqlRaw<AspNetUsers>("UserList").AsAsyncEnumerable();
+            return View(Users);
         }
 
         // GET: Admin/Details/5
