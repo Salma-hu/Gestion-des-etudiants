@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
+﻿using Etudiants.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Etudiants.Areas.Identity.Pages.Account
 {
@@ -53,6 +50,22 @@ namespace Etudiants.Areas.Identity.Pages.Account
             [Display(Name = "Email")]
             public string Email { get; set; }
 
+
+            [Display(Name = "Address")]
+            public string Address { get; set; }
+
+
+            [Display(Name = "Nom")]
+            public string Nom { get; set; }
+
+
+            [Display(Name = "Prenom")]
+            public string Prenom { get; set; }
+
+
+            [Display(Name = "CIN")]
+            public string CIN { get; set; }
+
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
@@ -81,11 +94,13 @@ namespace Etudiants.Areas.Identity.Pages.Account
             var role = _roleManager.FindByIdAsync(Input.Name).Result;
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Etudiant { UserName = Input.Email, Email = Input.Email, Adresse = Input.Address, CIN = Input.CIN, Nom = Input.Nom, Prenom = Input.Prenom };
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
                     await _userManager.AddToRoleAsync(user, role.Name);
 
                     /*var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

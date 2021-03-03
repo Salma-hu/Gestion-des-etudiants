@@ -1,0 +1,29 @@
+﻿@model AspNetRoles
+@{  
+    ViewData["Title"] = "Assign Role To User";
+}
+
+
+<div class="d-flex justify-content-center align-content-center"  >
+    <form asp-action="RoleToUser" method="post">
+        <div class="form-group">
+            <div class="input-group">
+                <label>
+                    User :
+                </label>
+                <select class="text-center " asp-for="Id" asp-items="@ViewBag.Users">
+                    <option disabled selected>User List</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>
+                    Role :
+                </label>
+                <select class="text-center" asp-for="Name" asp-items="@ViewBag.Roles" >
+                    <option disabled selected>Role List</option>
+                </select>
+            </div>
+            <input type="submit" value="Assign" />
+        </div>
+    </form>
+</div>

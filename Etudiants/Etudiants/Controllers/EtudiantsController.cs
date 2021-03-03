@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Etudiants.Data;
+﻿using Etudiants.Data;
 using Etudiants.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Etudiants.Controllers
-{ 
+{
     [Authorize]
-    
+
     public class EtudiantsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -29,7 +26,7 @@ namespace Etudiants.Controllers
         }
 
         // GET: Etudiants/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -69,7 +66,7 @@ namespace Etudiants.Controllers
         }
 
         // GET: Etudiants/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (id == null)
             {
@@ -89,7 +86,7 @@ namespace Etudiants.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Prenom,CIN,Adresse")] Etudiant etudiant)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Nom,Prenom,CIN,Adresse")] Etudiant etudiant)
         {
             if (id != etudiant.Id)
             {
@@ -120,7 +117,7 @@ namespace Etudiants.Controllers
         }
 
         // GET: Etudiants/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -148,7 +145,7 @@ namespace Etudiants.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EtudiantExists(int id)
+        private bool EtudiantExists(string id)
         {
             return _context.Etudiant.Any(e => e.Id == id);
         }
