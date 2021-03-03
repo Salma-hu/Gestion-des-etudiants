@@ -58,8 +58,8 @@ namespace Etudiants.Controllers
         [HttpPost]
         public async Task<IActionResult>  RoleToUser(AspNetRoles UserRole)
         {
-            var UserR = await _userManager.FindByIdAsync(UserRole.Id);
-            await _userManager.AddToRoleAsync(UserR, UserRole.Name);
+            var User = await _userManager.FindByIdAsync(UserRole.Id);
+            await _userManager.AddToRoleAsync(User, UserRole.Name);
             //var u_r = new AspNetUserRoles { RoleId = UserRole.Id, UserId = UserRole.Name };
             //await _applicationDbContext.AspNetUserRoles.AddAsync(u_r);
             //await _applicationDbContext.SaveChangesAsync();
